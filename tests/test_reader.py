@@ -1,4 +1,4 @@
-from scr.reader import EmailReader
+from src.reader import EmailReader
 
 def test_reader_reads_normal_email(tmp_path):
     email_file = tmp_path / "email.eml"

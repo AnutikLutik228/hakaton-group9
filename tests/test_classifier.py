@@ -1,6 +1,6 @@
 import pytest
 
-from scr.classifier import EmailClassifier
+from src.classifier import EmailClassifier
 
 
 def make_email(subject="", body="", sender="", attachments=None):
@@ -41,42 +41,32 @@ def make_email(subject="", body="", sender="", attachments=None):
 )
 def test_classifier_categories(email, expected_category):
     classifier = EmailClassifier()
-
     result = classifier.classify(email)
-
     assert result == expected_category
 
 
 def test_classifier_empty_email_goes_to_trash():
     classifier = EmailClassifier()
     email = make_email()
-
     result = classifier.classify(email)
-
     assert result == "Корзина"
 
 
 def test_classifier_none_email_goes_to_trash():
     classifier = EmailClassifier()
-
     result = classifier.classify(None)
-
     assert result == "Корзина"
 
 
 def test_classifier_unknown_email_goes_to_unknown():
     classifier = EmailClassifier()
     email = make_email(subject="Обычное письмо", body="Просто текст без ключевых слов")
-
     result = classifier.classify(email)
-
     assert result == "unknown"
 
 
 def test_classifier_detects_bug_by_attachment():
     classifier = EmailClassifier()
     email = make_email(subject="Лог", body="Посмотрите файл", attachments=["error.log"])
-
     result = classifier.classify(email)
-
     assert result == "Баги"
