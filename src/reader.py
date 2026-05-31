@@ -42,9 +42,12 @@ class EmailReader:
         if not encoding:
             encoding = 'utf-8'
             logger.warning(f"Кодировка не определена, использую utf-8: {path}")
-
-        with open(path, 'r', encoding=encoding) as f:
-            message = message_from_file(f)
+        try:
+            with open(path, 'r', encoding=encoding, errors='ignore') as f:
+                message = message_from_file(f)
+        except Exception as e:
+            logger.error(f"Не удалось прочитать файл: {path} — {e}")
+            return None
         logger.info(f"Успешно прочитан файл: {path}")
 
         email_dict = {

@@ -1,4 +1,5 @@
 #!/bin/bash
 
 cd "$(dirname "$0")"
-python3 scr/main.py --inbox inbox
+source venv/bin/activate
+python3 src/main.py --inbox inbox "$@" 2>>run.log
