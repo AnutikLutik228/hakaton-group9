@@ -28,7 +28,5 @@ def test_no_file(tmp_path):
 def test_empty_file(tmp_path):
     file = tmp_path / "empty.eml"
     file.write_text("", encoding="utf-8")
-
     result = EmailReader().read(str(file))
-
     assert result["subject"] == ""
