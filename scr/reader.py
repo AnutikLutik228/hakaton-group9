@@ -1,11 +1,9 @@
-from email.parser import Parser
-from email.policy import default
 import os
 from email import message_from_file
 from email.header import decode_header
 import chardet
-
-parser = Parser(policy=default)
+import logging
+logger = logging.getLogger(__name__)
 
 
 class EmailReader:
@@ -35,6 +33,7 @@ class EmailReader:
 
     def read(self, path: str) -> dict:
         if not os.path.exists(path):
+            logger.warning(f"Файл не найден: {path}")
             return None
         with open(path, 'rb') as file:
             raw_data = file.read(50000)
@@ -42,9 +41,11 @@ class EmailReader:
         encoding = result['encoding']
         if not encoding:
             encoding = 'utf-8'
+            logger.warning(f"Кодировка не определена, использую utf-8: {path}")
 
         with open(path, 'r', encoding=encoding) as f:
             message = message_from_file(f)
+        logger.info(f"Успешно прочитан файл: {path}")
 
         email_dict = {
             "from": self.get_header(message, 'From'),
