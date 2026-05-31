@@ -1,11 +1,9 @@
 import os
 import argparse
-
 from reader import EmailReader
 from classifier import EmailClassifier
 from mover import EmailMover
 from generate_report import generate_report
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -39,6 +37,7 @@ def main():
         else:
             category = classifier.classify(email)
             report_category = category
+
 
         if report_category not in stats:
             stats[report_category] = 0
