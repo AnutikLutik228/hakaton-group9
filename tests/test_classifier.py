@@ -2,6 +2,11 @@ import pytest
 
 from src.classifier import EmailClassifier
 
+def test_important_cases():
+    classifier = EmailClassifier()
+    email = {"subject": "срочно", "body": "", "from": ""}
+    result = classifier.classify(email)
+    assert result == "Срочно"
 
 def make_email(subject="", body="", sender="", attachments=None):
     if attachments is None:
