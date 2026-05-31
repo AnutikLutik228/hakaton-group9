@@ -50,7 +50,8 @@ class EmailReader:
             "from": self.get_header(message, 'From'),
             "to": self.get_header(message, 'To'),
             "subject": self.get_header(message, 'Subject'),
-            "body": self.get_body(message)
+            "body": self.get_body(message),
+            "attachments": self.get_attachments(message)
         }
 
         return email_dict
@@ -64,3 +65,14 @@ class EmailReader:
                     payload = part.get_payload(decode=True).decode(charset, errors='ignore')
                     return self.normalize_letter_to_russian_language(payload)
         return self.normalize_letter_to_russian_language(message.get_payload())
+
+    def get_attachments(self, message) -> list:
+        attachments = []
+        if not message.is_multipart():
+            return attachments
+        for part in message.walk():
+            if part.get_content_disposition() == 'attachment':
+                filename = part.get_filename()
+                if filename:
+                    attachments.append(filename)
+        return attachments
