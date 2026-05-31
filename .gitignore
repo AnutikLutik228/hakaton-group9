@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+run.log
+report.txt
+report.html
+.DS_Store
+inbox/
