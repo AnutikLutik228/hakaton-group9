@@ -24,6 +24,8 @@ def main():
         return
 
     for file_name in os.listdir(inbox_path):
+        if not (file_name.endswith('.eml') or file_name.endswith('.txt')):
+            continue
         src_path = os.path.join(inbox_path, file_name)
 
         if not os.path.isfile(src_path):
