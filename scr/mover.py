@@ -26,11 +26,5 @@ class EmailMover:
         if category is None:
             with open("run.log", "a", encoding="utf-8") as log:
                 log.write("Broken file moved: " + src_path + "\n")
-        return dst_path
-def generate_report(stats):
-    with open("report.txt", "w", encoding="utf-8") as file:
-        file.write("Report\n")
-        file.write("------\n")
 
-        for category in stats:
-            file.write(category + ": " + str(stats[category]) + "\n")
+        return dst_path
