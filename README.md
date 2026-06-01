@@ -26,7 +26,7 @@ pip install -r requirements.txt
  
 ```bash
 # Автоматически
-chmod +x run.sh
+chmod +x run.sh # Только для Unix-подобных систем
 ./run.sh
  
 # Вручную
