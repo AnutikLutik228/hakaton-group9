@@ -26,7 +26,7 @@ pip install -r requirements.txt
  
 ```bash
 # АВТОМАТИЧЕСКИ (macOS, Linux или Windows с установленным Git Bash)
-chmod +x run.sh # На Windows (Git Bash) эту строчку можно пропустить
+chmod +x run.sh # На Windows эту строчку можно пропустить
 ./run.sh
  
 # ВРУЧНУЮ (Для любой ОС)
