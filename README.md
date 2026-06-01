@@ -10,7 +10,7 @@
 ## Установка
  
 ```bash
-git clone https://github.com/ВАШ_НИКНЕЙМ/hakaton-group9.git
+git clone https://github.com/AnutikLutik228/hakaton-group9.git
 cd hakaton-group9
  
 python3 -m venv venv
