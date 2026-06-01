@@ -29,14 +29,15 @@ pip install -r requirements.txt
 chmod +x run.sh # На Windows (Git Bash) эту строчку можно пропустить
 ./run.sh
  
-# ВРУЧНУЮ (Для любой ОС, если автоматика не запускается)
+# ВРУЧНУЮ (Для любой ОС)
 # Если вы на Windows, пишите просто python вместо python3:
 python3 src/main.py --inbox inbox
  
-# ПРЕДПРОСМОТР (без перемещения файлов)
+# Предпросмотр без перемещения файлов
 python3 src/main.py --inbox inbox --dry-run
 После запуска письма окажутся в папках по категориям, статистика — в report.txt.
- 
+```
+
 ---
  
 ## Тесты
